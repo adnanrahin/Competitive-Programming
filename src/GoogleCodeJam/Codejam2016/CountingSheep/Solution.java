@@ -1,4 +1,4 @@
-package GoogleCodeJam.Codejam2016;
+package GoogleCodeJam.Codejam2016.CountingSheep;
 
 import java.io.BufferedReader;
 import java.io.IOException;
