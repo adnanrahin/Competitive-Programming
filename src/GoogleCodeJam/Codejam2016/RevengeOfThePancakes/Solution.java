@@ -50,7 +50,18 @@ public class Solution {
         }
     }
 
-    public static void main(String[ ]args){
+    public static void main(String[] args) {
+        FastReader fr = new FastReader();
+        int testCase = fr.nextInt();
+        for (int i = 1; i <= testCase; i++) {
+            String cakes = fr.nextLine();
+            pancakeSorting(cakes.toCharArray(), i);
+        }
+    }
+
+    public static void pancakeSorting(char[] pancakes, int caseNumber) {
+
+        
 
     }
 
