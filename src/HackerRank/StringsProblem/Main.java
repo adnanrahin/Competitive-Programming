@@ -64,7 +64,6 @@ public class Main {
     }
 
     public static int countingValleys(int steps, String path) {
-        int counter = 0;
         int numberOfValley = 0;
         int[] dp = new int[steps + 1];
         for (int i = 1; i <= steps; i++) {
@@ -77,7 +76,6 @@ public class Main {
                 numberOfValley++;
             }
         }
-
         return numberOfValley;
     }
 
