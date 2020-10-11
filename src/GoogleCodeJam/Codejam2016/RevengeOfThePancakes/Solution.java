@@ -61,8 +61,6 @@ public class Solution {
 
     public static void pancakeSorting(char[] pancakes, int caseNumber) {
 
-
-
     }
 
 }
