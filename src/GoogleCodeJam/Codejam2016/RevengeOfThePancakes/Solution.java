@@ -60,13 +60,27 @@ public class Solution {
         }
     }
 
-    public static void pancakeSorting(char[] pancakes, int caseNumber){
+    public static void pancakeSorting(char[] pancakes, int caseNumber) {
+
+        Stack<Character> stack = new Stack<>();
+
+        for (char ch : pancakes) stack.push(ch);
+
+        while (!isSmileFace(stack)) {
+
+            int minusCounter = 0;
+            int plusCounter = 0;
+            int minusLastPosition = 0;
+
+
+
+        }
 
     }
 
     public static boolean isSmileFace(Stack<Character> stack) {
         for (char ch : stack) {
-            if(ch == '-')return false;
+            if (ch == '-') return false;
         }
         return true;
     }
