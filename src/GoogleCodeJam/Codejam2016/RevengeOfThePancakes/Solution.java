@@ -3,6 +3,7 @@ package GoogleCodeJam.Codejam2016.RevengeOfThePancakes;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Stack;
 import java.util.StringTokenizer;
 
 public class Solution {
@@ -59,8 +60,16 @@ public class Solution {
         }
     }
 
-    public static void pancakeSorting(char[] pancakes, int caseNumber) {
+    public static void pancakeSorting(char[] pancakes, int caseNumber){
 
     }
+
+    public static boolean isSmileFace(Stack<Character> stack) {
+        for (char ch : stack) {
+            if(ch == '-')return false;
+        }
+        return true;
+    }
+
 
 }
