@@ -62,28 +62,23 @@ public class Solution {
 
     public static void pancakeSorting(char[] pancakes, int caseNumber) {
 
-        Stack<Character> stack = new Stack<>();
+        int plusMinusCounter = flipCounter(pancakes, '-', '+');
+        int minusPlusCounter = flipCounter(pancakes, '+', '-');
 
-        for (char ch : pancakes) stack.push(ch);
+        int group = 1 + plusMinusCounter + minusPlusCounter;
 
-        while (!isSmileFace(stack)) {
-
-            int minusCounter = 0;
-            int plusCounter = 0;
-            int minusLastPosition = 0;
-
-
-
-        }
-
+        if (pancakes[pancakes.length - 1] == '-')
+            System.out.println("Case #" + caseNumber + ": " + (group));
+        else
+            System.out.println("Case #" + caseNumber + ": " + (group - 1));
     }
 
-    public static boolean isSmileFace(Stack<Character> stack) {
-        for (char ch : stack) {
-            if (ch == '-') return false;
+    public static int flipCounter(char[] pancakes, char a, char b) {
+        int counter = 0;
+        for (int i = 0; i < pancakes.length - 1; i++) {
+            if (pancakes[i] == a && pancakes[i + 1] == b) counter++;
         }
-        return true;
+        return counter;
     }
-
 
 }
