@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class Solution {
+public class Main {
 
     static class FastReader {
         BufferedReader br;
@@ -53,19 +53,20 @@ public class Solution {
     public static void main(String[] ags) {
         FastReader fr = new FastReader();
         int testCase = fr.nextInt();
-        for (int i = 0; i <= testCase; i++) {
+        for (int i = 0; i < testCase; i++) {
             int x = fr.nextInt();
             int y = fr.nextInt();
             int n = fr.nextInt();
             binaryExponential(x, y, n);
         }
+        int garbage = fr.nextInt();
     }
 
     public static void binaryExponential(int x, int y, int n) {
         int result = 1;
         while (y > 0) {
-            if (y % 2 == 1) result = (result % n) * x;
-            x *= x;
+            if (y % 2 == 1) result = ((result % n) * (x % n)) % n;
+            x = (x % n) * (x % n);
             y /= 2;
         }
         System.out.println(result % n);
