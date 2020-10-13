@@ -51,19 +51,28 @@ public class Main {
     }
 
     public static void main(String[] args) {
-
         FastReader fr = new FastReader();
         int testCase = fr.nextInt();
 
         for (int i = 1; i <= testCase; i++) {
-            int n = fr.nextInt();
-            int k = fr.nextInt();
+            long n = fr.nextInt();
+            long k = fr.nextInt();
+            solution(n, k);
         }
     }
 
-    public static void solution(int n, int k) {
+    public static void solution(long n, long k) {
 
+        double d = Math.log10(n) * k;
+        int leading = (int) (Math.pow(10, (d - (int) d)) * 100);
+
+        long res = 1;
+        while (k > 0) {
+            if (k % 2 == 1) res = (res % 1000) * (n % 1000);
+            n = (n % 1000) * (n % 1000);
+            k /= 2;
+        }
+        res %= 1000;
+        System.out.printf("%03d...%03d\n", leading, res);
     }
-
-
 }
