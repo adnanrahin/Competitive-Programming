@@ -62,7 +62,7 @@ public class Main {
     }
 
     public static void solution(int n, int k) {
-        
+
     }
 
 
