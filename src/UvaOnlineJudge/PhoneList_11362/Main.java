@@ -60,18 +60,16 @@ public class Main {
         for (int i = 1; i <= testCase; i++) {
             int PhoneListNumbers = fr.nextInt();
             Trie trie = new Trie();
-            boolean isConsistent = false;
-
-            List<String> words = new ArrayList<>();
+            boolean[] isConsistent = {true};
 
             for (int j = 1; j <= PhoneListNumbers; j++) {
                 String word = fr.nextLine();
-                if (isConsistent) continue;
-                isConsistent = trie.insert(word);
+                if (isConsistent[0])
+                    trie.insert(word, isConsistent);
             }
 
-            if (isConsistent) System.out.println("NO");
-            else System.out.println("YES");
+            if (isConsistent[0]) System.out.println("YES");
+            else System.out.println("NO");
         }
 
     }
@@ -81,10 +79,12 @@ public class Main {
         public static class TrieNode {
             Map<Character, TrieNode> map;
             boolean isWord;
+            int nodeCounter = 0;
 
             public TrieNode() {
                 map = new HashMap<>();
                 isWord = false;
+                nodeCounter = 0;
             }
         }
 
@@ -94,22 +94,27 @@ public class Main {
             root = new TrieNode();
         }
 
-        public boolean insert(String word) {
+        public void insert(String word, boolean[] foundPrefix) {
             TrieNode temp = root;
-            boolean foundPrefix = false;
             for (int i = 0; i < word.length(); i++) {
                 TrieNode newNode = temp.map.get(word.charAt(i));
                 if (newNode == null) {
                     newNode = new TrieNode();
+                    temp.nodeCounter = 1;
+                    if (i == word.length() - 1) temp.isWord = true;
                     temp.map.put(word.charAt(i), newNode);
-                } else if (newNode != null) {
-                    foundPrefix = newNode.isWord;
+                } else {
+                    if (temp.isWord) {
+                        foundPrefix[0] = false;
+                        break;
+                    }
+                    if (i == word.length() - 1) {
+                        foundPrefix[0] = false;
+                        break;
+                    }
                 }
                 temp = newNode;
             }
-            temp.isWord = true;
-
-            return foundPrefix;
         }
 
     }
