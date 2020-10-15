@@ -11,7 +11,7 @@ public class Main {
     static class FastReader {
         final private int BUFFER_SIZE = 1 << 16;
         private final DataInputStream din;
-        private byte[] buffer;
+        private final byte[] buffer;
         private int bufferPointer, bytesRead;
 
         public FastReader() {
