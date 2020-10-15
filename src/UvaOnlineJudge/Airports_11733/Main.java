@@ -1,10 +1,7 @@
 package UvaOnlineJudge.Airports_11733;
 
 import java.io.*;
-import java.util.HashSet;
-import java.util.PriorityQueue;
-import java.util.Set;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class Main {
 
@@ -53,7 +50,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        FastReader fr = new FastReader();
+        Scanner fr = new Scanner(System.in);
 
         int testCase = fr.nextInt();
 
