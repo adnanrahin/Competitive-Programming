@@ -66,24 +66,14 @@ public class Main {
 
             for (int j = 1; j <= PhoneListNumbers; j++) {
                 String word = fr.nextLine();
-                words.add(word);
+                if (isConsistent) continue;
+                isConsistent = trie.insert(word);
             }
 
-            Collections.sort(words);
-
-            for(String word: words){
-                boolean temp = trie.insert(word);
-                if (!isConsistent && temp) {
-                    isConsistent = true;
-                }
-            }
-            System.out.println(solutionString(isConsistent));
+            if (isConsistent) System.out.println("NO");
+            else System.out.println("YES");
         }
 
-    }
-
-    public static String solutionString(boolean isConsistent) {
-        return isConsistent ? "NO" : "YES";
     }
 
     public static class Trie {
