@@ -1,11 +1,10 @@
-package HackerRank.Graph.RoadsInHackerLand;
+package HackerRank.Graph.ConnectedCellInGrid;
 
 import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.PriorityQueue;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Main {
 
@@ -113,66 +112,61 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException {
-
-        /*FastReader fr = new FastReader();
-
+        FastReader fr = new FastReader();
         int testCase = fr.nextInt();
-
         for (int i = 0; i < testCase; i++) {
-            int vertex = fr.nextInt();
-            int edge = fr.nextInt();
-            int[][] roads = new int[edge][3];
-
-            for (int j = 0; j < edge; j++) {
-                roads[i][0] = fr.nextInt();
-                roads[i][1] = fr.nextInt();
-                roads[i][2] = fr.nextInt();
+            int n = fr.nextInt();
+            int m = fr.nextInt();
+            int[][] matrix = new int[n][m];
+            for (int row = 0; row < n; row++) {
+                for (int col = 0; col < m; col++) {
+                    matrix[row][col] = fr.nextInt();
+                }
             }
-            System.out.println(roadsInHackerland(vertex, roads));
-        }*/
-
-        int[][] graph = new int[][]{{1, 3, 5}, {4, 5, 0}, {2, 1, 3}, {3, 2, 1}, {4, 3, 4}, {4, 2, 2}};
-
-        System.out.println(roadsInHackerland(5, graph));
-
+        }
     }
 
-    public static String roadsInHackerland(int n, int[][] roads) {
+    public static int[][] directions = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}, {1, 1}, {1, -1}, {-1, 1}, {-1, -1}};
 
-        int minCost = 0;
+    public static int maxRegion(int[][] grid) {
+        int maxRegion = 0;
 
-        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> Integer.compare(a[2], b[2]));
-
-        int[] dsu = new int[n + 1];
-        for (int i = 1; i <= n; i++) dsu[i] = i;
-
-        for (int[] dir : roads) {
-            pq.add(new int[]{dir[0], dir[1], dir[2]});
-        }
-
-        while (!pq.isEmpty()) {
-            int[] parent = pq.poll();
-            int x = find(dsu, parent[0]);
-            int y = find(dsu, parent[1]);
-            if (x != y) {
-                union(dsu, x, y);
-                minCost += parent[2];
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[0].length; j++) {
+                if (grid[i][j] == 1)
+                    maxRegion = Math.max(maxRegion, breadthFirstSearch(grid, i, j));
             }
         }
 
-        System.out.println(minCost);
-
-        return Integer.toBinaryString(minCost);
+        return maxRegion;
     }
 
-    public static int find(int[] dsu, int x) {
-        if (x == dsu[x]) return x;
-        return find(dsu, dsu[x]);
+    public static int breadthFirstSearch(int[][] grid, int row, int col) {
+
+        int sizeOfCurrentCluster = 0;
+
+        Queue<int[]> queue = new LinkedList<>();
+        queue.add(new int[]{row, col});
+        grid[row][col] = 0;
+
+        while (!queue.isEmpty()) {
+            int[] parent = queue.poll();
+            sizeOfCurrentCluster++;
+
+            for (int[] dir : directions) {
+                int r = dir[0] + parent[0];
+                int c = dir[1] + parent[1];
+                if (isValid(grid, r, c) && grid[r][c] == 1) {
+                    queue.add(new int[]{r, c});
+                    grid[r][c] = 0;
+                }
+            }
+        }
+        return sizeOfCurrentCluster;
     }
 
-    public static void union(int[] dsu, int x, int y) {
-        int xp = find(dsu, x);
-        int yp = find(dsu, y);
-        dsu[yp] = xp;
+    public static boolean isValid(int[][] gird, int row, int col) {
+        return row >= 0 && row < gird.length && col >= 0 && col < gird[0].length;
     }
+
 }
