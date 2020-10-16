@@ -3,9 +3,13 @@ package UvaOnlineJudge.PhoneList_11362;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.StringTokenizer;
 
 public class Main {
+
+    private static boolean isConsistent = true;
 
     static class FastReader {
         BufferedReader br;
@@ -50,73 +54,67 @@ public class Main {
         }
     }
 
-
     public static void main(String[] args) {
 
         FastReader fr = new FastReader();
 
         int testCase = fr.nextInt();
 
-        for (int i = 1; i <= testCase; i++) {
-            int PhoneListNumbers = fr.nextInt();
+        for (int i = 0; i < testCase; i++) {
+            int n = fr.nextInt();
             Trie trie = new Trie();
-            boolean[] isConsistent = {true};
-
-            for (int j = 1; j <= PhoneListNumbers; j++) {
-                String word = fr.nextLine();
-                if (isConsistent[0])
-                    trie.insert(word, isConsistent);
+            isConsistent = true;
+            for (int j = 0; j < n; ++j) {
+                String digits = fr.nextLine();
+                if (isConsistent)
+                    trie.buildTree(digits);
             }
-
-            if (isConsistent[0]) System.out.println("YES");
-            else System.out.println("NO");
+            if (isConsistent)
+                System.out.println("YES");
+            else
+                System.out.println("NO");
         }
-
     }
 
-    public static class Trie {
 
+    private static class Trie {
         public static class TrieNode {
-            Map<Character, TrieNode> map;
-            boolean isWord;
-            int nodeCounter = 0;
+            boolean isCons;
+            Map<Character, TrieNode> next;
 
             public TrieNode() {
-                map = new HashMap<>();
-                isWord = false;
-                nodeCounter = 0;
+                isCons = false;
+                next = new HashMap<>();
             }
         }
 
         private final TrieNode root;
 
-        public Trie() {
+        private Trie() {
             root = new TrieNode();
         }
 
-        public void insert(String word, boolean[] foundPrefix) {
-            TrieNode temp = root;
-            for (int i = 0; i < word.length(); i++) {
-                TrieNode newNode = temp.map.get(word.charAt(i));
+        private void buildTree(String s) {
+
+            TrieNode current = root;
+
+            for (int i = 0; i < s.length(); i++) {
+
+                TrieNode newNode = current.next.get(s.charAt(i));
+
                 if (newNode == null) {
                     newNode = new TrieNode();
-                    temp.nodeCounter = 1;
-                    if (i == word.length() - 1) temp.isWord = true;
-                    temp.map.put(word.charAt(i), newNode);
+                    current.next.put(s.charAt(i), newNode);
+
                 } else {
-                    if (temp.isWord) {
-                        foundPrefix[0] = false;
-                        break;
-                    }
-                    if (i == word.length() - 1) {
-                        foundPrefix[0] = false;
+                    if (newNode.isCons || i == s.length() - 1) {
+                        isConsistent = false;
                         break;
                     }
                 }
-                temp = newNode;
+                current = newNode;
             }
+            current.isCons = true;
         }
-
     }
-
 }
