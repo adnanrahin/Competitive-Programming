@@ -53,15 +53,21 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println(phiTable("ho0ho0ho0"));
-        System.out.println(phiTable("abcabcabcabc"));
-
-        /*FastReader fr = new FastReader();
+        FastReader fr = new FastReader();
         int testCase = fr.nextInt();
-        for (int i = 0; i < testCase; i++) {
+        for (int i = 1; i <= testCase; i++) {
+            fr.nextLine();
             String str = fr.nextLine();
-            System.out.println(str);
-        }*/
+            int n = phiTable(str);
+            int ans = str.length() - n - 1;
+            if (str.length() % ans == 0)
+                System.out.println(ans);
+            else
+                System.out.println(str.length());
+
+            if (i < testCase) System.out.println();
+
+        }
     }
 
     public static int phiTable(String word) {
@@ -85,9 +91,8 @@ public class Main {
             }
         }
 
-        System.out.println(Arrays.toString(phi));
-
-        return 0;
+        return phi[word.length() - 1] - 1;
     }
 
 }
+
