@@ -58,7 +58,7 @@ public class Main {
 
         for (int i = 0; i < testCase; i++) {
             String text = fr.next();
-            System.out.print(phiTable(text));
+            System.out.println(phiTable(text));
         }
     }
 
@@ -89,7 +89,7 @@ public class Main {
             solution.append(str.charAt(l));
         }
 
-        solution.append("...\n");
+        solution.append("...");
 
         return solution.toString();
     }
