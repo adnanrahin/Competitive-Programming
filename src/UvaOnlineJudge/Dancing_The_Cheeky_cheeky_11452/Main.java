@@ -53,18 +53,20 @@ public class Main {
 
     public static void main(String[] args) {
 
-        phiTable("123124123124");
-
-        /*FastReader fr = new FastReader();
+        FastReader fr = new FastReader();
 
         int testCase = fr.nextInt();
 
         for (int i = 0; i < testCase; i++) {
             String text = fr.next();
-        }*/
+            System.out.print(phiTable(text));
+        }
     }
 
-    public static void phiTable(String str) {
+    public static String phiTable(String str) {
+
+        StringBuilder solution = new StringBuilder();
+
         int[] phi = new int[str.length()];
         int i = 0, j = 1;
 
@@ -80,7 +82,16 @@ public class Main {
             }
         }
 
-        System.out.println(Arrays.toString(phi));
-    }
+        int n = str.length() - phi[str.length() - 1];
+        int s = str.length() % n;
 
+        for (int l = s, counter = 0; counter < 8; counter++, l++) {
+            if (l >= str.length()) l = 0;
+            solution.append(str.charAt(l));
+        }
+
+        solution.append("...\n");
+
+        return solution.toString();
+    }
 }
