@@ -66,7 +66,7 @@ public class Solution {
                     grid[i][j] = fr.nextInt();
                 }
             }
-            solution(grid, testCase);
+            solution(grid, tt);
         }
     }
 
