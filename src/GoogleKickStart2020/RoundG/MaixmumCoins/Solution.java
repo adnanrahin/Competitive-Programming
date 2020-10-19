@@ -3,8 +3,6 @@ package GoogleKickStart2020.RoundG.MaixmumCoins;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class Solution {
@@ -59,60 +57,19 @@ public class Solution {
         int testCase = fr.nextInt();
 
         for (int tt = 1; tt <= testCase; tt++) {
+            long maxProfit = 0;
             int n = fr.nextInt();
-            int[][] grid = new int[n][n];
+            long[][] grid = new long[n][n];
             for (int i = 0; i < n; i++) {
                 for (int j = 0; j < n; j++) {
                     grid[i][j] = fr.nextInt();
+                    if (i != 0 && j != 0) {
+                        grid[i][j] += grid[i - 1][j - 1];
+                    }
+                    maxProfit = Math.max(maxProfit, grid[i][j]);
                 }
             }
-            solution(grid, tt);
+            System.out.println("Case #" + tt + ": " + maxProfit);
         }
     }
-
-    public static void solution(int[][] grid, int testCase) {
-
-        int maximumCoins = 0, n = grid.length;
-
-        boolean[][] visited = new boolean[n][n];
-
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                if (!visited[i][j]) {
-                    maximumCoins = Math.max(maximumCoins, breadthFirstSearch(grid, i, j, visited));
-                }
-            }
-        }
-        System.out.println("Case #" + testCase + ": " + maximumCoins);
-    }
-
-
-    public static int breadthFirstSearch(int[][] grid, int row, int col, boolean[][] visited) {
-        int maxProfit = 0;
-        visited[row][col] = true;
-        Queue<int[]> queue = new LinkedList<>();
-        queue.add(new int[]{row, col});
-
-        while (!queue.isEmpty()) {
-            int[] parent = queue.poll();
-            maxProfit += grid[parent[0]][parent[1]];
-            for (int[] dir : directions) {
-                int r = dir[0] + parent[0];
-                int c = dir[1] + parent[1];
-                if (isValid(grid, r, c) && !visited[r][c]) {
-                    visited[r][c] = true;
-                    queue.add(new int[]{r, c});
-                }
-            }
-        }
-
-        return maxProfit;
-    }
-
-    public static int[][] directions = {{-1, -1}, {1, 1}};
-
-    public static boolean isValid(int[][] grid, int row, int col) {
-        return row >= 0 && row < grid.length && col >= 0 && col < grid[0].length;
-    }
-
 }
