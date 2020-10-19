@@ -70,10 +70,31 @@ public class Main {
 
     public static void solution(int[][] grid, int testCase) {
 
-        int maximumCoins = 0;
+        int maximumCoins = 0, n = grid.length;
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+
+            }
+        }
+
 
         System.out.println("Case #" + testCase + ": " + maximumCoins);
 
+    }
+
+
+    public static int breadthFirstSearch(int[][] grid, int row, int col, boolean[][] visited) {
+        int maxProfit = 0;
+
+
+        return maxProfit;
+    }
+
+    public static int[][] directions = {{-1, -1}, {1, 1}};
+
+    public static boolean isValid(int[][] grid, int row, int col) {
+        return row >= 0 && row < grid.length && col >= 0 && col < grid[0].length;
     }
 
 }
