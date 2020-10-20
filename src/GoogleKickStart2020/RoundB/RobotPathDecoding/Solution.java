@@ -59,7 +59,14 @@ public class Solution {
         for (int i = 1; i <= testCase; i++) {
             String direction = fr.nextLine();
         }
+    }
 
+    public static void solution(String str, int testCase) {
+
+        int x = 0, y = 0;
+
+
+        System.out.println("Case #" + testCase + ": " + x + " " + y);
     }
 
 }
