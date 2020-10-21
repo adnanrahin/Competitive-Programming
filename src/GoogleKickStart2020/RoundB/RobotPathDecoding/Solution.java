@@ -71,7 +71,7 @@ public class Solution {
     }
 
     public static String decodeString(String s) {
-        StringBuilder str = new StringBuilder();
+        String str = "";
         Stack<String> strings = new Stack<>();
         Stack<Integer> numbers = new Stack<>();
         int num = 0;
@@ -79,20 +79,24 @@ public class Solution {
         for (int i = 0; i < s.length(); i++) {
 
             if (Character.isLetter(s.charAt(i))) {
-                str.append(s.charAt(i));
+                str += s.charAt(i);
             } else if (Character.isDigit(s.charAt(i))) {
                 num = num * 10 + s.charAt(i) - '0';
             } else if (s.charAt(i) == '(') {
-                strings.push(str.toString());
+                strings.push(str);
                 numbers.push(num);
                 num = 0;
-                str = new StringBuilder();
+                str = "";
             } else {
-                int rpt = numbers.pop();
-                str = new StringBuilder(((strings.isEmpty()) ? "" : strings.pop()) + str.toString().repeat(Math.max(0, rpt)));
+                int rpt = numbers.isEmpty() ? 0 : numbers.pop();
+                String rptString = (strings.isEmpty()) ? "" : strings.pop();
+                for (int j = 0; j < rpt; j++) {
+                    rptString += str;
+                }
+                str = rptString;
             }
         }
-        return str.toString();
+        return str;
     }
 
     public static void solution(String word, int testCase) {
@@ -107,6 +111,7 @@ public class Solution {
         map.put('W', -1);
 
         long x = 1, y = 1;
+        long largeNumber = 1000000000;
 
         for (int i = 0; i < str.length(); i++) {
 
@@ -115,12 +120,12 @@ public class Solution {
             if (Character.isLetter(ch)) {
                 if (ch == 'N' || ch == 'S') {
                     y += map.get(ch);
-                    if (y == 0) y = 1000000000;
-                    else if (y > 1000000000) y = 1;
+                    if (y == 0) y = largeNumber;
+                    else if (y > largeNumber) y = 1;
                 } else if (ch == 'E' || ch == 'W') {
                     x += map.get(ch);
-                    if (x == 0) x = 1000000000;
-                    else if (x > 1000000000) x = 1;
+                    if (x == 0) x = largeNumber;
+                    else if (x > largeNumber) x = 1;
                 }
             }
         }
