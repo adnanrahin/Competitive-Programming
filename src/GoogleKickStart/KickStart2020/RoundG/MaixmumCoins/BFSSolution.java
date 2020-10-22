@@ -1,4 +1,4 @@
-package GoogleKickStart2020.RoundG.MaixmumCoins;
+package GoogleKickStart.KickStart2020.RoundG.MaixmumCoins;
 
 import java.io.BufferedReader;
 import java.io.IOException;

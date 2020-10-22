@@ -1,4 +1,4 @@
-package GoogleKickStart2020.RoundA.Allocation;
+package GoogleKickStart.KickStart2020.RoundA.Allocation;
 
 import java.io.BufferedReader;
 import java.io.IOException;

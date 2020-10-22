@@ -1,4 +1,4 @@
-package GoogleKickStart2020.RoundA.Plates;
+package GoogleKickStart.KickStart2020.RoundA.Plates;
 
 import java.io.BufferedReader;
 import java.io.IOException;

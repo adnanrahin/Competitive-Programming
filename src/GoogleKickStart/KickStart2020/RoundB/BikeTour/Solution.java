@@ -1,4 +1,4 @@
-package GoogleKickStart2020.RoundG.MaixmumCoins;
+package GoogleKickStart.KickStart2020.RoundB.BikeTour;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -51,25 +51,27 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-
         FastReader fr = new FastReader();
 
         int testCase = fr.nextInt();
 
-        for (int tt = 1; tt <= testCase; tt++) {
-            long maxProfit = 0;
-            int n = fr.nextInt();
-            long[][] grid = new long[n][n];
-            for (int i = 0; i < n; i++) {
-                for (int j = 0; j < n; j++) {
-                    grid[i][j] = fr.nextInt();
-                    if (i != 0 && j != 0) {
-                        grid[i][j] += grid[i - 1][j - 1];
-                    }
-                    maxProfit = Math.max(maxProfit, grid[i][j]);
-                }
-            }
-            System.out.println("Case #" + tt + ": " + maxProfit);
+        for (int i = 1; i <= testCase; i++) {
+            int size = fr.nextInt();
+            int[] arr = new int[size];
+            for (int j = 0; j < size; j++) arr[j] = fr.nextInt();
+            solution(arr, i);
         }
     }
+
+    public static void solution(int[] arr, int testCase) {
+        int counter = 0;
+
+        for (int i = 1; i < arr.length - 1; i++) {
+            if (arr[i - 1] < arr[i] && arr[i] > arr[i + 1]) {
+                counter++;
+            }
+        }
+        System.out.println("Case #" + testCase + ": " + counter);
+    }
+
 }

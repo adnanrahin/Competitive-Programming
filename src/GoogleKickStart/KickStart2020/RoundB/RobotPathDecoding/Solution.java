@@ -1,4 +1,4 @@
-package GoogleKickStart2020.RoundB.RobotPathDecoding;
+package GoogleKickStart.KickStart2020.RoundB.RobotPathDecoding;
 
 import java.io.BufferedReader;
 import java.io.IOException;
