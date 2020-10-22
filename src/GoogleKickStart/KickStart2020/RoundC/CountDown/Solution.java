@@ -58,21 +58,33 @@ public class Solution {
 
         for (int tt = 1; tt <= testCase; tt++) {
 
-            int n = fr.nextInt();
-            int k = fr.nextInt();
-            int[] arr = new int[n];
+            long n = fr.nextInt();
+            long k = fr.nextInt();
+            long[] arr = new long[(int) n];
             for (int i = 0; i < n; i++) {
                 arr[i] = fr.nextInt();
             }
+            solution(arr, k, tt);
         }
     }
 
-    public static void solution(int[] arr, int k, int caseNumber) {
+    public static void solution(long[] arr, long k, int caseNumber) {
 
-        int counter = 0;
+        long counter = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == k) {
+                long j = k;
+                while (i < arr.length && j == arr[i] && j >= 1) {
+                    i++;
+                    j--;
+                }
+                if (j == 0) counter++;
+                i--;
+            }
+        }
 
         System.out.println("Case #" + caseNumber + ": " + counter);
-
     }
 
 }
