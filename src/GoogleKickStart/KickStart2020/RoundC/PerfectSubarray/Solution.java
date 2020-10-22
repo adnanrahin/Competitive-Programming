@@ -51,7 +51,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-
+        
         FastReader fr = new FastReader();
 
         int testCase = fr.nextInt();
