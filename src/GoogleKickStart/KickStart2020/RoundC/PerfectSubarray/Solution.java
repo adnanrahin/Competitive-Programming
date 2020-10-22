@@ -62,13 +62,23 @@ public class Solution {
             for (int i = 0; i < size; i++) {
                 arr[i] = fr.nextInt();
             }
+            solution(arr, tt);
         }
     }
 
     public static void solution(int[] arr, int caseNumber) {
         int counter = 0;
 
-
+        for (int i = 0; i < arr.length; i++) {
+            int sum = 0;
+            for (int j = i; j < arr.length; j++) {
+                sum += arr[j];
+                int sqrt = (int) Math.sqrt(sum);
+                if (sqrt * sqrt == sum) {
+                    counter++;
+                }
+            }
+        }
 
         System.out.println("Case #" + caseNumber + ": " + counter);
     }
