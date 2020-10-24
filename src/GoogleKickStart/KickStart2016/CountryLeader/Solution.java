@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class Main {
+public class Solution {
 
     static class FastReader {
         BufferedReader br;
@@ -52,8 +52,6 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println(solution("AAAAABCCCCCCBBBBCD"));
-
         FastReader fr = new FastReader();
 
         int testCase = fr.nextInt();
@@ -67,6 +65,11 @@ public class Main {
                 int temp = solution(newString);
                 if (counter < temp) {
                     counter = temp;
+                    name = newString;
+                } else if (temp == counter) {
+                    if (name.compareTo(newString) > 0) {
+                        name = newString;
+                    }
                 }
             }
             System.out.println("Case #" + tt + ": " + name);
@@ -82,9 +85,6 @@ public class Main {
                 counter++;
             }
         }
-
         return counter;
     }
-
-
 }
