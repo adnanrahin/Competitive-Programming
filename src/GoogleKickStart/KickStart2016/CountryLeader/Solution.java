@@ -61,7 +61,7 @@ public class Solution {
             String name = "";
             int counter = 0;
             for (int i = 0; i < numberOfNames; i++) {
-                String newString = fr.next();
+                String newString = fr.nextLine();
                 int temp = solution(newString);
                 if (counter < temp) {
                     counter = temp;
