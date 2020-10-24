@@ -51,7 +51,26 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        
+
+        FastReader fr = new FastReader();
+
+        int testCase = fr.nextInt();
+
+        for (int tt = 1; tt <= testCase; tt++) {
+            int numberOfNames = fr.nextInt();
+            String[] strArray = new String[numberOfNames];
+            for (int i = 0; i < numberOfNames; i++) {
+                strArray[i] = fr.nextLine();
+            }
+        }
     }
+
+    public static void solution(int caseNumber) {
+        String name = "";
+
+
+        System.out.println("Case #" + caseNumber + ": " + name);
+    }
+
 
 }
