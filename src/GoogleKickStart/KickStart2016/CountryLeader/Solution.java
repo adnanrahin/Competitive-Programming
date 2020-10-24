@@ -81,6 +81,7 @@ public class Solution {
         int[] carArr = new int[26];
 
         for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == ' ') continue;
             if (++carArr[str.charAt(i) - 'A'] == 1) {
                 counter++;
             }
