@@ -52,24 +52,38 @@ public class Main {
 
     public static void main(String[] args) {
 
+        System.out.println(solution("AAAAABCCCCCCBBBBCD"));
+
         FastReader fr = new FastReader();
 
         int testCase = fr.nextInt();
 
         for (int tt = 1; tt <= testCase; tt++) {
             int numberOfNames = fr.nextInt();
-            String[] strArray = new String[numberOfNames];
+            String name = "";
+            int counter = 0;
             for (int i = 0; i < numberOfNames; i++) {
-                strArray[i] = fr.nextLine();
+                String newString = fr.next();
+                int temp = solution(newString);
+                if (counter < temp) {
+                    counter = temp;
+                }
             }
+            System.out.println("Case #" + tt + ": " + name);
         }
     }
 
-    public static void solution(int caseNumber) {
-        String name = "";
+    public static int solution(String str) {
+        int counter = 0;
+        int[] carArr = new int[26];
 
+        for (int i = 0; i < str.length(); i++) {
+            if (++carArr[str.charAt(i) - 'A'] == 1) {
+                counter++;
+            }
+        }
 
-        System.out.println("Case #" + caseNumber + ": " + name);
+        return counter;
     }
 
 
