@@ -25,7 +25,7 @@ public class Main {
 
         StringBuilder temp = new StringBuilder();
 
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 100000000; i++) {
             int rand = (int) (random.nextInt(100) + (1e9 + 7));
             temp.append(map.get(rand % 4));
         }
