@@ -1,4 +1,4 @@
-package GoogleKickStart.KickStart2016.CountryLeader;
+package GoogleKickStart.KickStart2016.RoundA.CountryLeader;
 
 import java.io.BufferedReader;
 import java.io.IOException;

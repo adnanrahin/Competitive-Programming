@@ -1,4 +1,4 @@
-package GoogleKickStart.KickStart2016.Rain;
+package GoogleKickStart.KickStart2016.RoundA.Rain;
 
 import java.io.BufferedReader;
 import java.io.IOException;
