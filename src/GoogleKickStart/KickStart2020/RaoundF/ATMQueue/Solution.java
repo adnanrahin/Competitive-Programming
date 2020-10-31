@@ -69,6 +69,8 @@ public class Solution {
 
     }
 
+    /* Breadth First Search Solution led to TLE for to Optimize the Time Complexity, need to implement sorting based solution.*/
+
     public static void solution(int caseNumber, int[][] token, int amount) {
         List<Integer> solution = new ArrayList<>();
         Queue<int[]> queue = new LinkedList<>(Arrays.asList(token));
