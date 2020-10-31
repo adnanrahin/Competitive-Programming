@@ -3,7 +3,7 @@ package GoogleKickStart.KickStart2020.RaoundF.ATMQueue;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class Solution {
 
@@ -57,9 +57,32 @@ public class Solution {
         int testCase = fr.nextInt();
 
         for (int tt = 1; tt <= testCase; tt++) {
-            
+            int customerNumber = fr.nextInt();
+            int amount = fr.nextInt();
+            int[][] token = new int[customerNumber][2];
+            for (int i = 0; i < customerNumber; i++) {
+                token[i][0] = i + 1;
+                token[i][1] = fr.nextInt();
+            }
+            solution(tt, token, amount);
         }
 
+    }
+
+    public static void solution(int caseNumber, int[][] token, int amount) {
+        List<Integer> solution = new ArrayList<>();
+        Queue<int[]> queue = new LinkedList<>(Arrays.asList(token));
+        while (!queue.isEmpty()) {
+            int[] arr = queue.poll();
+            if (arr[1] <= amount) {
+                solution.add(arr[0]);
+            } else {
+                queue.add(new int[]{arr[0], Math.abs(arr[1] - amount)});
+            }
+        }
+        System.out.print("Case #" + caseNumber + ": ");
+        for (Integer integer : solution) System.out.print(integer + " ");
+        System.out.println();
     }
 
 }
