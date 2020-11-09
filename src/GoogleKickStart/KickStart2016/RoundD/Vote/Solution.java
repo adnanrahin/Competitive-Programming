@@ -58,7 +58,7 @@ public class Solution {
 
         for (int tt = 1; tt <= testCase; tt++) {
             int a = fr.nextInt(), b = fr.nextInt();
-            solution(a, b, testCase);
+            solution(a, b, tt);
         }
 
     }
