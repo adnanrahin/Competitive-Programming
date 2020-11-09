@@ -63,12 +63,12 @@ public class Solution {
 
     }
 
-    public static void solution(int a, int b, int testCase) {
+    public static void solution(int n, int m, int testCase) {
         double ans = 0.0;
 
-        ans = (a - b) / (double) (a + b);
+        ans = (n - m) / (double) (n + m);
 
-        System.out.print("Case #" + testCase + ": " + ans);
+        System.out.println("Case #" + testCase + ": " + ans);
     }
 
 }
