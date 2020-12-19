@@ -11,6 +11,8 @@ public class Main {
                 {'0', '0', '0', '0', '0'}
         };
 
+        System.out.println(new Solution().numIslands(board));
+
     }
 
 }
@@ -31,7 +33,6 @@ class Solution {
                 }
             }
         }
-
         return numberOfIsland;
     }
 
@@ -44,9 +45,6 @@ class Solution {
             int r = row + dir[0], c = col + dir[1];
             depthFirstSearch(board, r, c);
         }
-
-        return;
-
     }
 
     public boolean isValid(char[][] board, int row, int col) {
