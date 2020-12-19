@@ -6,11 +6,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        PriorityQueue<Integer> pq = new PriorityQueue<>((a, b) -> (b - a));
-
     }
-
-
 }
 
 class Solution {
