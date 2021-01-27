@@ -35,10 +35,10 @@ class Solution {
         }
 
         for (int i = start; i < candidates.length; i++) {
-            if (i > 0 && candidates[i] == candidates[i - 1]) continue;
+            if (i > start && candidates[i] == candidates[i - 1]) continue;
             else {
                 list.add(candidates[i]);
-                backtrack(candidates, target - candidates[i], list, solution, i);
+                backtrack(candidates, target - candidates[i], list, solution, i + 1);
                 list.remove(list.size() - 1);
             }
         }
