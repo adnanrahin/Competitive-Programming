@@ -9,6 +9,8 @@ public class Main {
 
     public static void main(String[] args) {
 
+        DepthFirstSearchSolution dfs = new DepthFirstSearchSolution();
+
     }
 
 
@@ -31,34 +33,33 @@ public class Main {
         }
     }
 
-    class Solution {
-        public List<List<Integer>> levelOrder(TreeNode root) {
+}
 
-            if (root == null) return new ArrayList<>();
+class DepthFirstSearchSolution {
+    public List<List<Integer>> levelOrder(Main.TreeNode root) {
 
-            List<List<Integer>> solution = new ArrayList<>();
-            Map<Integer, List<Integer>> map = new HashMap<>();
-            levelOrder(root, map, 0);
+        if (root == null) return new ArrayList<>();
 
-            for(Integer itr: map.keySet()){
-                solution.add(map.get(itr));
-            }
+        List<List<Integer>> solution = new ArrayList<>();
+        Map<Integer, List<Integer>> map = new HashMap<>();
+        levelOrder(root, map, 0);
 
-            return solution;
+        for (Integer itr : map.keySet()) {
+            solution.add(map.get(itr));
         }
 
-        public void levelOrder(TreeNode root, Map<Integer, List<Integer>> map, int level) {
-
-            if (root == null) return;
-
-            if (!map.containsKey(level)) {
-                map.put(level, new ArrayList<>());
-            }
-            map.get(level).add(root.val);
-            levelOrder(root.left, map, level + 1);
-            levelOrder(root.right, map, level + 1);
-        }
-
+        return solution;
     }
 
+    public void levelOrder(Main.TreeNode root, Map<Integer, List<Integer>> map, int level) {
+
+        if (root == null) return;
+
+        if (!map.containsKey(level)) {
+            map.put(level, new ArrayList<>());
+        }
+        map.get(level).add(root.val);
+        levelOrder(root.left, map, level + 1);
+        levelOrder(root.right, map, level + 1);
+    }
 }
