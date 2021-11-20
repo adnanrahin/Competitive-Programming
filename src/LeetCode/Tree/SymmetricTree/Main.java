@@ -1,4 +1,4 @@
-package LeetCode.SymmetricTree;
+package LeetCode.Tree.SymmetricTree;
 
 public class Main {
 
