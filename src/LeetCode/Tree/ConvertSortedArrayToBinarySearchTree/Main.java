@@ -4,8 +4,9 @@ public class Main {
 
     public static void main(String[] args) {
 
+
     }
-    
+
     public class TreeNode {
         int val;
         TreeNode left;
@@ -27,10 +28,16 @@ public class Main {
 
     class Solution {
         public TreeNode sortedArrayToBST(int[] nums) {
-            TreeNode result = new TreeNode();
+            return makeTree(nums, 0, nums.length - 1);
+        }
 
-
-            return result;
+        public TreeNode makeTree(int[] nums, int low, int high) {
+            if (low > high) return null;
+            int mid = low + (high - low) / 2;
+            TreeNode root = new TreeNode(nums[mid]);
+            root.left = makeTree(nums, low, mid - 1);
+            root.right = makeTree(nums, mid + 1, high);
+            return root;
         }
     }
 
