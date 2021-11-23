@@ -13,12 +13,10 @@ public class Main {
         StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < val.length && num > 0; i++) {
-
             while (val[i] <= num) {
                 num -= val[i];
                 sb.append(symbols[i]);
             }
-
         }
 
         return sb.toString();
