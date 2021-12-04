@@ -21,11 +21,8 @@ public class Main {
             } else {
                 left = mid + 1;
             }
-
         }
-
         return right;
-
     }
 
 }
