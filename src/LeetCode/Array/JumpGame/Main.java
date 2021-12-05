@@ -11,12 +11,11 @@ public class Main {
         int sum = 0;
 
         for (int i = 0; i < nums.length; i++) {
-
-            
-
+            if (i > sum) return false;
+            sum = Math.max(sum, i + nums[i]);
         }
 
-        return false;
+        return true;
     }
 
 }
