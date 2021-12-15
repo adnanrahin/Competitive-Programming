@@ -1,4 +1,4 @@
-package LeetCode.String.ThreeSum;
+package LeetCode.Array.ThreeSum;
 
 import java.util.ArrayList;
 import java.util.Arrays;
