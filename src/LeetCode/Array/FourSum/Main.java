@@ -8,9 +8,11 @@ public class Main {
 
     public static void main(String[] args) {
 
+        System.out.println(fourSum(new int[]{1, 0, -1, 0, -2, 2}, 0));
+
     }
 
-    public List<List<Integer>> fourSum(int[] nums, int target) {
+    public static List<List<Integer>> fourSum(int[] nums, int target) {
 
         if (nums.length < 4) return new ArrayList<>();
 
@@ -26,9 +28,10 @@ public class Main {
 
                 if (j > i + 1 && nums[j] == nums[j - 1]) continue;
 
-                int left = j + 1, right = nums[nums.length - 1];
+                int left = j + 1, right = nums.length - 1;
 
                 while (left < right) {
+
 
                     if (right < nums.length - 1 && nums[right] == nums[right + 1]) {
                         right--;
@@ -37,11 +40,11 @@ public class Main {
 
                     int sum = nums[i] + nums[j] + nums[left] + nums[right];
 
-                    if (sum == 0) {
+                    if (sum == target) {
                         solution.add(Arrays.asList(nums[i], nums[j], nums[left], nums[right]));
                         left++;
                         right--;
-                    } else if (sum > 0) {
+                    } else if (sum > target) {
                         right--;
                     } else left++;
 
